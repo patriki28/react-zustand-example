@@ -1,0 +1,22 @@
+{
+  "data": [
+    {
+      "title": "Meeting Notes",
+      "body": "Discussed project milestones, deadlines, and responsibilities.",
+      "createdAt": "2024-12-01T10:00:00Z",
+      "updatedAt": "2024-12-01T12:00:00Z"
+    },
+    {
+      "title": "Grocery List",
+      "body": "Milk, eggs, bread, coffee, and snacks.",
+      "createdAt": "2024-11-30T08:15:00Z",
+      "updatedAt": "2024-11-30T09:00:00Z"
+    },
+    {
+      "title": "Workout Plan",
+      "body": "Morning run, strength training, and yoga in the evening.",
+      "createdAt": "2024-11-29T06:30:00Z",
+      "updatedAt": "2024-11-29T07:00:00Z"
+    }
+  ]
+}

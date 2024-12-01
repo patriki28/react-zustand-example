@@ -1,0 +1,7 @@
+coverage
+dist
+logs
+node_modules
+package-lock.json
+package.json
+public
