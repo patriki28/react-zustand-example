@@ -2,7 +2,7 @@ import { Outlet, useNavigate } from 'react-router-dom';
 import { Button } from '../ui/button';
 import { ThemeToggle } from '../ui/theme-toggle';
 import { Separator } from '../ui/separator';
-import { useNoteStore } from '@/features/notes';
+import { useNoteStore } from '@/features/notes/store';
 
 export default function HomeLayout() {
   const navigate = useNavigate();
@@ -10,7 +10,11 @@ export default function HomeLayout() {
 
   async function handleDeleteAllNotes() {
     if (!window.confirm('Are you want to delete all these notes?')) return;
-    await deleteAllNotes();
+    try {
+      await deleteAllNotes();
+    } catch (error) {
+      console.error('Deleting notes error', error);
+    }
   }
 
   return (

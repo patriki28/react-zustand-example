@@ -24,7 +24,6 @@ export default function AddNotePage() {
           </BreadcrumbItem>
         </BreadcrumbList>
       </Breadcrumb>
-      <h1 className="my-3 text-xl font-semibold">Add Note</h1>
       <AddNoteForm />
     </div>
   );

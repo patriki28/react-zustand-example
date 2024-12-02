@@ -1,4 +1,4 @@
-import { useNoteStore } from '..';
+import { useNoteStore } from '../store';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import {
@@ -13,9 +13,12 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Button } from '@/components/ui/button';
 import { NoteFormData, noteFormSchema } from '../utils/note.schema';
+import { AlertSuccess } from '@/components/ui/alert-success';
+import { AlertError } from '@/components/ui/alert-error';
 
 export default function AddNoteForm() {
-  const { createNote } = useNoteStore();
+  const { message, error, isLoading, createNote } = useNoteStore();
+
   const form = useForm<NoteFormData>({
     resolver: zodResolver(noteFormSchema),
     defaultValues: {
@@ -27,7 +30,7 @@ export default function AddNoteForm() {
   async function onSubmit(values: NoteFormData) {
     try {
       await createNote(values);
-      console.log(values);
+
       form.reset();
     } catch (error) {
       console.error('Form submission error', error);
@@ -60,7 +63,11 @@ export default function AddNoteForm() {
             <FormItem>
               <FormLabel>Body</FormLabel>
               <FormControl>
-                <Textarea placeholder="Enter body" {...field} />
+                <Textarea
+                  placeholder="Enter body"
+                  className="max-h-[300px]"
+                  {...field}
+                />
               </FormControl>
 
               <FormMessage />
@@ -68,8 +75,10 @@ export default function AddNoteForm() {
           )}
         />
         <Button type="submit" className="w-full">
-          Add
+          {isLoading ? 'Loading...' : 'Add'}
         </Button>
+        {message && <AlertSuccess title="Success" message={message} />}
+        {error && <AlertError error={error} />}
       </form>
     </Form>
   );

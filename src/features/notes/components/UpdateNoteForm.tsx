@@ -1,3 +1,5 @@
+import { useEffect } from 'react';
+import { useNoteStore } from '../store';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import {
@@ -11,27 +13,41 @@ import {
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Button } from '@/components/ui/button';
-import { NoteFormData, noteFormSchema, NoteProps } from '../utils/note.schema';
-import { useNoteStore } from '..';
+import { NoteFormData, noteFormSchema } from '../utils/note.schema';
 
-export default function UpdateNoteForm({
-  id = '',
-  title = '',
-  body = ''
-}: NoteProps) {
-  const { updateNote } = useNoteStore();
+interface UpdateNoteFormProps {
+  noteId: string | undefined;
+}
+
+export default function UpdateNoteForm({ noteId }: UpdateNoteFormProps) {
+  const { isLoading, updateNote, fetchNoteById, note } = useNoteStore();
+
   const form = useForm<NoteFormData>({
     resolver: zodResolver(noteFormSchema),
     defaultValues: {
-      title: title,
-      body: body
+      title: '',
+      body: ''
     }
   });
 
+  useEffect(() => {
+    if (noteId) {
+      fetchNoteById(noteId);
+    }
+  }, [noteId, fetchNoteById]);
+
+  useEffect(() => {
+    if (note) {
+      form.setValue('title', note.title);
+      form.setValue('body', note.body);
+    }
+  }, [note, form]);
+
   async function onSubmit(values: NoteFormData) {
     try {
-      await updateNote(id, values);
-      console.log(values);
+      if (note) {
+        await updateNote(note.id, values);
+      }
     } catch (error) {
       console.error('Form submission error', error);
     }
@@ -53,6 +69,7 @@ export default function UpdateNoteForm({
             </FormItem>
           )}
         />
+
         <FormField
           control={form.control}
           name="body"
@@ -60,14 +77,19 @@ export default function UpdateNoteForm({
             <FormItem>
               <FormLabel>Body</FormLabel>
               <FormControl>
-                <Textarea placeholder="Enter note body" {...field} />
+                <Textarea
+                  placeholder="Enter note body"
+                  className="max-h-[300px]"
+                  {...field}
+                />
               </FormControl>
               <FormMessage />
             </FormItem>
           )}
         />
-        <Button type="submit" className="w-full">
-          Save
+
+        <Button type="submit" className="w-full" disabled={isLoading}>
+          {isLoading ? 'Loading...' : 'Save'}
         </Button>
       </form>
     </Form>
