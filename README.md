@@ -4,14 +4,14 @@
 
 ![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)![React](https://img.shields.io/badge/zustand-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)![Zod](https://img.shields.io/badge/zod-%233068b7.svg?style=for-the-badge&logo=zod&logoColor=white)![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)![ESLint](https://img.shields.io/badge/ESLint-4B3263?style=for-the-badge&logo=eslint&logoColor=white)![Prettier](https://img.shields.io/badge/prettier-%23F7B93E.svg?style=for-the-badge&logo=prettier&logoColor=black)
 
-| Tool       | Description                                                                    |
-| ---------- | ------------------------------------------------------------------------------ |
-| TypeScript | Adds static typing to JavaScript, reducing bugs and improving maintainability. |
-| React      |                                                                                |
-| Zustand    |                                                                                |
-| Zod        | Runtime schema validation for TypeScript.                                      |
-| ESLint     | Linter for maintaining code quality and consistency.                           |
-| Prettier   | Code formatter for consistent and clean codestyle.                             |
+| Tool       | Description                                                                           |
+| ---------- | ------------------------------------------------------------------------------------- |
+| TypeScript | Adds static typing to JavaScript, reducing bugs and improving maintainability.        |
+| React      | JavaScript library for building user interfaces, especially single-page applications. |
+| Zustand    | A small, fast, and scalable state management tool for React.                          |
+| Zod        | Runtime schema validation for TypeScript.                                             |
+| ESLint     | Linter for maintaining code quality and consistency.                                  |
+| Prettier   | Code formatter for consistent and clean codestyle.                                    |
 
 ## Features
 
@@ -32,12 +32,15 @@
 ## Pages
 
 HomePage.tsx
+
 ![Home Page](./src/assets/img/HomePage.png)
 
 AddNotePage.tsx
+
 ![Add Note Page](./src/assets/img/AddNotePage.png)
 
 ViewNotePage.tsx
+
 ![View Note Page](./src/assets/img/ViewNotePage.png)
 
 ## Clone the project
@@ -74,7 +77,7 @@ Following are the list of predefined scripts available in the app
 | prettier     | Check the format of files with prettier.                     | npm run prettier     |
 | prettier:fix | Format files with prettier.                                  | npm run prettier:fix |
 | format       | Format files with prettier and eslint.                       | npm run format       |
-| shadcn:add   | Add new shadcn/ui  component                                 | npm run shadcn:add   |
+| shadcn:add   | Add new shadcn/ui component                                  | npm run shadcn:add   |
 | commit       | Opens commitizen.                                            | npm run commit       |
 
 ## Folder structure
